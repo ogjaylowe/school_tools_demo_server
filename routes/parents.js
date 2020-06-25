@@ -9,6 +9,11 @@ mongoose.connect(db), {
     useUnifiedTopology: true
 };
 
+// testing connection command
+mongoose.connection.on('connected', () => {
+    console.log('connected')
+});
+
 // mongo Schema to be used
 var Student = require('../models/Student.model')
 var Parent = require('../models/Parent.model')
@@ -38,8 +43,8 @@ router.post('/', function (req, res) {
                 console.log(parent)
                 res.json(parent)
             }
-        
-        }) 
+
+        })
 });
 
 /*

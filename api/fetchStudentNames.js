@@ -10,6 +10,11 @@ mongoose.connect(mongoDB), {
     useUnifiedTopology: true
 };
 
+// testing connection command
+mongoose.connection.on('connected', () => {
+    console.log('connected')
+});
+
 var Student = require('../models/Student.model')
 
 router.get('/', function (req, res) {

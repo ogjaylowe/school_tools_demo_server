@@ -14,6 +14,7 @@ mongoose.connect(mongoDB), {
 mongoose.connection.on('connected', () => {
     console.log('connected')
 });
+mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 var Student = require('../models/Student.model')
 

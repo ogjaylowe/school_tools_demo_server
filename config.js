@@ -8,7 +8,7 @@ mongoose.connect(db), {
 
 // Mongo Atlas Recommendation
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://jlowe:SgtPepper10@webappdb-7ymjf.mongodb.net/WebAppDB?retryWrites=true&w=majority";
+const uri = "mongodb+srv://jlowe:SgtPepper10@webappdb-7ymjf.mongodb.net/orion?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
   const collection = client.db("test").collection("devices");
@@ -18,8 +18,17 @@ client.connect(err => {
 
 // modified URL
 var mongoose = require('mongoose')
-var db = "mongodb+srv://jlowe:SgtPepper10@webappdb-7ymjf.mongodb.net/WebAppDB?retryWrites=true&w=majority";
+var db = "mongodb+srv://jlowe:SgtPepper10@webappdb-7ymjf.mongodb.net/orion?retryWrites=true&w=majority";
 mongoose.connect(db), {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+};
+
+// modified with Heroku connection
+var mongoose = require('mongoose')
+var dev_db_url = "mongodb+srv://jlowe:SgtPepper10@webappdb-7ymjf.mongodb.net/orion?retryWrites=true&w=majority";
+var mongoDB = process.env.MONGODB_URI || dev_db_url;
+mongoose.connect(mongoDB), {
     useNewUrlParser: true,
     useUnifiedTopology: true
 };

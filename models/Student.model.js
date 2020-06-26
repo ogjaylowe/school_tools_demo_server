@@ -15,9 +15,25 @@ module.exports = mongoose.model('Student', StudentSchema)
 original_id = ObjectId()
 
 db.students.insert({
-        fname: "Proper",
-        lname: "Student",
-        totalHours: 100,
+        fname: "Billy",
+        lname: "Bob",
+        totalHours: 64,
+        detentionHistory: [],
+        homeworkClubHistory: []
+    })
+
+db.students.insert({
+        fname: "Carmel",
+        lname: "Valley",
+        totalHours: 126,
+        detentionHistory: [],
+        homeworkClubHistory: []
+    })
+    
+db.students.insert({
+        fname: "Tom",
+        lname: "Stillwater",
+        totalHours: 243,
         detentionHistory: [],
         homeworkClubHistory: []
     })

@@ -19,11 +19,14 @@ mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection 
 var Student = require('../models/Student.model')
 
 router.get('/', function (req, res) {
+    console.log('Student Find exec')
     Student.find({})
         .exec(function (err, students) {
             if (err) {
+                console.log(err)
                 res.send('error!')
             } else {
+                console.log("this is the console log for students, --> ", students)
                 res.json(students)
             }
         })

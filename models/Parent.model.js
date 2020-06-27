@@ -15,11 +15,11 @@ module.exports = mongoose.model('Parent', ParentSchema)
 
 /*
 db.parents.insert({
-    fname: "Biggy",
-    lname: "Cottontail",
-    username: "4",
+    fname: "Huck",
+    lname: "Stillwater",
+    username: "hstillwater",
     password: "123",
-    email: "pcottontail_forest.com",
-    student: ObjectId("5ed6d408b937d05a4e6e10bc")
+    email: "asdf.com",
+    student: ObjectId("5ef63cf5d1599c4bcac2a770")
 })
 */

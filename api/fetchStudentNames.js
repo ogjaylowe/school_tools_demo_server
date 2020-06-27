@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-// modified URL
+// mongoDB connection via mongoose
+var configValues = require('../config.js')
 var mongoose = require('mongoose')
-var dev_db_url = "mongodb+srv://jlowe:SgtPepper10@webappdb-7ymjf.mongodb.net/orion?retryWrites=true&w=majority";
-var mongoDB = process.env.MONGODB_URI || dev_db_url;
-mongoose.connect(mongoDB), {
+
+mongoose.connect(configValues.db), {
     useNewUrlParser: true,
     useUnifiedTopology: true
 };

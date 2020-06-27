@@ -1,0 +1,42 @@
+
+/*
+
+var dev_db_url = "mongodb+srv://jlowe:SgtPepper10@webappdb-7ymjf.mongodb.net/orion?retryWrites=true&w=majority";
+var db = process.env.MONGODB_URI || dev_db_url;
+
+console.log("config -> ", configValues.db)
+console.log("not config -> ", db)
+
+// local
+var mongoose = require('mongoose')
+var db = 'mongodb://localhost/complete';
+mongoose.connect(db), {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+};
+
+// Mongo Atlas Recommendation
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://jlowe:SgtPepper10@webappdb-7ymjf.mongodb.net/orion?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
+
+// modified URL
+var mongoose = require('mongoose')
+var db = "mongodb+srv://jlowe:SgtPepper10@webappdb-7ymjf.mongodb.net/orion?retryWrites=true&w=majority";
+mongoose.connect(db), {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+};
+
+
+
+// testing connection command
+mongoose.connection.on('connected', () => {
+  console.log('connected')
+});
+

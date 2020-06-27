@@ -13,8 +13,8 @@ module.exports = mongoose.model('Admin', AdminSchema)
 
 /*
 db.admins.insert({
-    fname: "Audrey",
-    lname: "Wertz",
+    fname: "1",
+    lname: "2",
     username: "1",
     email: "awertz.com",
     password: "123",

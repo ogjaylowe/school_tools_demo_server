@@ -1,10 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-// connection to mongo
+// mongoDB connection via mongoose
+var configValues = require('../config.js')
 var mongoose = require('mongoose')
-var db = 'mongodb://localhost/complete';
-mongoose.connect(db);
+
+mongoose.connect(configValues.db), {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+};
 
 var Detention = require('../models/Detention.model')
 var Student = require('../models/Student.model')

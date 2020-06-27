@@ -3,12 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cors = require('cors')
 
-//connect to MongoDB Atlas Cluster for Orion
-// connection to mongo
+// mongoDB connection via mongoose
+var configValues = require('./config.js')
 var mongoose = require('mongoose')
-var db = "mongodb+srv://jlowe:SgtPepper10@webappdb-7ymjf.mongodb.net/orion?retryWrites=true&w=majority";
-mongoose.connect(db), {
+
+mongoose.connect(configValues.db), {
     useNewUrlParser: true,
     useUnifiedTopology: true
 };
@@ -36,6 +37,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// cors origin URL - Allow inbound traffic from origin
+corsOptions = {
+  origin: "https://ogjaylowe.github.io/school_tools_frontend_fresh/",
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+app.use(cors(corsOptions));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

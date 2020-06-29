@@ -1,6 +1,16 @@
 var express = require('express');
 var router = express.Router();
 
+var cors = require('cors')
+
+// cors origin URL - Allow inbound traffic from origin
+corsOptions = {
+    origin: "https://ogjaylowe.github.io/adminClient",
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  };
+  app.use(cors(corsOptions));
+
+
 // mongoDB connection via mongoose
 var configValues = require('../config.js')
 var mongoose = require('mongoose')

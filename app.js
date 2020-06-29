@@ -3,7 +3,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var cors = require('cors')
 
 // mongoDB connection via mongoose
 var configValues = require('./config.js')
@@ -25,7 +24,6 @@ var homeworkClubRouter = require('./api/homeworkClub')
 var adminHomeworkClub = require('./api/adminHomeworkClub')
 var fetchStudentNames = require('./api/fetchStudentNames')
 
-
 var app = express();
 
 // view engine setup
@@ -37,13 +35,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-// cors origin URL - Allow inbound traffic from origin
-corsOptions = {
-  origin: "https://ogjaylowe.github.io",
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
-app.use(cors(corsOptions));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

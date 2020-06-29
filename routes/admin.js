@@ -19,11 +19,15 @@ var Admin = require('../models/Admin.model')
 
 
 // cors origin URL - Allow inbound traffic from origin
+/*
 corsOptions = {
     origin: "https://ogjaylowe.github.io/school_tools_frontend_fresh/",
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
-router.options('/', cors()) // enable pre-flight request for POST request
+*/
+
+corsOptions = { origin: false }
+// router.options('/', cors()) // enable pre-flight request for POST request
 router.use(cors(corsOptions));
 
 router.get('/', cors(corsOptions), function (req, res, next) {
@@ -45,7 +49,7 @@ router.get('/', function (req, res) {
 */
 
 // check for a parent -- if none found return false (indicates not a user)
-router.post('/', function (req, res) {
+router.post('/', cors(corsOptions), function (req, res) {
     console.log(req.body)
     Admin.findOne({ username: req.body.username, password: req.body.password })
         .exec(function (err, admin) {

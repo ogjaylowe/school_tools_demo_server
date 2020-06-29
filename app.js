@@ -40,7 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // cors origin URL - Allow inbound traffic from origin
 corsOptions = {
-  origin: "https://ogjaylowe.github.io/school_tools_frontend_fresh/",
+  origin: "https://ogjaylowe.github.io",
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 app.use(cors(corsOptions));

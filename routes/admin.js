@@ -26,7 +26,7 @@ corsOptions = {
 router.options('https://school-server-demo.herokuapp.com/admin', cors()) // enable pre-flight request for POST request
 router.use(cors(corsOptions));
 
-router.get('https://school-server-demo.herokuapp.com/admin', cors(corsOptions), function (req, res, next) {
+router.get('/', cors(corsOptions), function (req, res, next) {
     res.json({ msg: 'This is CORS-enabled for only example.com.' })
 })
 

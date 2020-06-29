@@ -19,15 +19,14 @@ var Admin = require('../models/Admin.model')
 
 
 // cors origin URL - Allow inbound traffic from origin
-/*
 corsOptions = {
     origin: "https://ogjaylowe.github.io/school_tools_frontend_fresh/",
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
-*/
 
-corsOptions = { origin: false }
-// router.options('/', cors()) // enable pre-flight request for POST request
+
+//corsOptions = { origin: false }
+router.options('/', cors()) // enable pre-flight request for POST request
 router.use(cors(corsOptions));
 
 router.get('/', cors(corsOptions), function (req, res, next) {

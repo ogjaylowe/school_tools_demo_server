@@ -21,6 +21,9 @@ var Admin = require('../models/Admin.model')
 // cors origin URL - Allow inbound traffic from origin
 corsOptions = {
     origin: "*",
+    methods: "GET, POST",
+    allowedHeaders: "Content-Type, Accept, Origin",
+    preflightContinue: false,
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 

@@ -5,10 +5,11 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors')
 
-// mongoDB connection via mongoose
-var configValues = require('./config.js')
 var mongoose = require('mongoose')
 
+var configValues = require('./config.js')
+
+// mongoDB connection via mongoose
 mongoose.connect(configValues.db), {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -36,7 +37,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors(corsOptions));
+app.use(cors(configValues.corsOptions));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

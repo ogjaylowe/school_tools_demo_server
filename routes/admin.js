@@ -19,18 +19,8 @@ var Admin = require('../models/Admin.model')
 
 
 // cors origin URL - Allow inbound traffic from origin
-corsOptions = {
-    origin: "*",
-    methods: "GET, POST",
-    allowedHeaders: "Content-Type, Accept, Origin",
-    preflightContinue: false,
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
-
-
-//corsOptions = { origin: false }
 router.options('/', cors()) // enable pre-flight request for POST request
-router.use(cors(corsOptions));
+router.use(cors(configValues.corsOptions));
 
 /*
 router.get('/', cors(corsOptions), function (req, res, next) {

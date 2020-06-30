@@ -20,7 +20,7 @@ var Admin = require('../models/Admin.model')
 
 // cors origin URL - Allow inbound traffic from origin
 corsOptions = {
-    origin: "https://ogjaylowe.github.io/school_tools_frontend_fresh/",
+    origin: "*",
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 

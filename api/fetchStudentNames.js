@@ -1,21 +1,22 @@
 var express = require('express');
 var router = express.Router();
-
-// mongoDB connection via mongoose
-var configValues = require('../config.js')
 var mongoose = require('mongoose')
 
+var cors = require('cors')
+
+var configValues = require('../config.js')
+
+// CORS security options and pre-flight
+router.options('/', cors()) // enable pre-flight request for POST request
+router.use(cors(configValues.corsOptions));
+
+// mongoDB connection via mongoose
 mongoose.connect(configValues.db), {
     useNewUrlParser: true,
     useUnifiedTopology: true
 };
 
-// testing connection command
-mongoose.connection.on('connected', () => {
-    console.log('connected')
-});
-mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error:'))
-
+// mongo Schema to be used
 var Student = require('../models/Student.model')
 
 router.get('/', function (req, res) {

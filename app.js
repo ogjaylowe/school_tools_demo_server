@@ -15,6 +15,12 @@ mongoose.connect(configValues.db), {
     useUnifiedTopology: true
 };
 
+// testing connection command
+mongoose.connection.on('connected', () => {
+  console.log('MongoDB connection established')
+});
+mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error:'))
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var parentsRouter = require('./routes/parents')
@@ -37,6 +43,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// CORS security options and pre-flight
+app.options('/', cors()) // enable pre-flight request for POST request
 app.use(cors(configValues.corsOptions));
 
 app.use('/', indexRouter);

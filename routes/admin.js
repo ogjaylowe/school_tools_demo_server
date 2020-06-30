@@ -1,12 +1,16 @@
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose')
+
 var cors = require('cors')
 
 var configValues = require('../config.js')
 
-// mongoDB connection via mongoose
-var mongoose = require('mongoose')
+// CORS security options and pre-flight
+router.options('/', cors()) // enable pre-flight request for POST request
+router.use(cors(configValues.corsOptions));
 
+// mongoDB connection via mongoose
 mongoose.connect(configValues.db), {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -15,14 +19,8 @@ mongoose.connect(configValues.db), {
 // mongo Schema to be used
 var Admin = require('../models/Admin.model')
 
-
-// CORS security options and pre-flight
-console.log(configValues.corsOptions)
-router.options('/', cors()) // enable pre-flight request for POST request
-router.use(cors(configValues.corsOptions));
-
-
-// get Schema information from mongo db
+/*
+// get Schema information from mongo db for confirming connection
 router.get('/', cors(configValues.corsOptions), function (req, res) {
   Admin.find({})
       .exec(function (err, admin) {
@@ -33,7 +31,7 @@ router.get('/', cors(configValues.corsOptions), function (req, res) {
           }
       })
 });
-
+*/
 
 // check for a parent -- if none found return false (indicates not a user)
 router.post('/', cors(configValues.corsOptions), function (req, res) {

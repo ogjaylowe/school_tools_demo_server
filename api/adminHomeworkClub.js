@@ -1,15 +1,22 @@
 var express = require('express');
 var router = express.Router();
-
-// mongoDB connection via mongoose
-var configValues = require('../config.js')
 var mongoose = require('mongoose')
 
+var cors = require('cors')
+
+var configValues = require('../config.js')
+
+// CORS security options and pre-flight
+router.options('/', cors()) // enable pre-flight request for POST request
+router.use(cors(configValues.corsOptions));
+
+// mongoDB connection via mongoose
 mongoose.connect(configValues.db), {
     useNewUrlParser: true,
     useUnifiedTopology: true
 };
 
+// mongo Schema to be used
 var CurrentHomeworkClubEntry = require('../models/CurrentHomeworkClubEntry.model')
 var Student = require('../models/Student.model')
 

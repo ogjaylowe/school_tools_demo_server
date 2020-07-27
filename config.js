@@ -2,7 +2,8 @@
 var dev_db_url = "mongodb+srv://jlowe:SgtPepper10@webappdb-7ymjf.mongodb.net/orion?retryWrites=true&w=majority";
 
 cOptions = {
-  origin: "https://ogjaylowe.github.io",
+  //origin: "https://ogjaylowe.github.io",
+  origin: "*",
   methods: "GET, POST, DELETE, PUT",
   allowedHeaders: "Content-Type, Accept, Origin",
   preflightContinue: false,

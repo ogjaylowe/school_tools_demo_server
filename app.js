@@ -30,6 +30,7 @@ var singleStudentRouter = require('./api/singleStudent')
 var detentionCenterRouter = require('./api/detentionCenter')
 var homeworkClubRouter = require('./api/homeworkClub')
 var adminHomeworkClub = require('./api/adminHomeworkClub')
+var adminDetentionCenter = require('./api/adminDetentionCenter')
 var fetchStudentNames = require('./api/fetchStudentNames')
 
 var app = express();
@@ -57,6 +58,8 @@ app.use('/api/singleStudent', singleStudentRouter)
 app.use('/api/detentionCenter', detentionCenterRouter)
 app.use('/api/homeworkClub', homeworkClubRouter)
 app.use('/api/adminHomeworkClub', adminHomeworkClub)
+app.use('/api/adminDetentionCenter', adminDetentionCenter)
+
 app.use('/api/fetchStudentNames', fetchStudentNames)
 
 
